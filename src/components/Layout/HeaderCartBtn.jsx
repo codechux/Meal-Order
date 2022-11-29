@@ -60,10 +60,10 @@ const Button = styled.button`
     }
   }
 `;
-const HeaderCartBtn = () => {
+const HeaderCartBtn = (props) => {
   return (
     <>
-      <Button>
+      <Button onClick={props.onShow}>
         <span className="icon">
           <CartIcon />
         </span>

@@ -1,12 +1,7 @@
 import styled from "styled-components";
+import Modal from "../UI/Modal";
 
 const Carts = styled.div`
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  max-height: 20rem;
-  overflow: auto;
-
   .total {
     display: flex;
     justify-content: space-between;
@@ -47,13 +42,39 @@ const Carts = styled.div`
   }
 `;
 
-const Cart = () => {
+const Ul = styled.ul`
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 20rem;
+  overflow: auto;
+`;
+
+const Cart = (props) => {
+  const cartitems = (
+    <Ul>
+      {[{ id: "c1", name: "sushi", amount: 2, price: 12.99 }].map((item) => (
+        <li>{item.name}</li>
+      ))}
+    </Ul>
+  );
   return (
-    <Carts>
-      Cart items
-      <div></div>
-      <div></div>
-    </Carts>
+    <Modal onClose={props.onClose}>
+      <Carts>
+        {cartitems}
+        <div className="total">
+          <span>Total Amount</span>
+          <span>36.56</span>
+        </div>
+
+        <div className="actions">
+          <button className="button--alt" onClick={props.onClose}>
+            close
+          </button>
+          <button className="button">order</button>
+        </div>
+      </Carts>
+    </Modal>
   );
 };
 

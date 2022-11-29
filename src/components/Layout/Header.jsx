@@ -32,12 +32,12 @@ const Image = styled.div`
   }
 `;
 
-const Header = () => {
+const Header = (props) => {
   return (
     <>
       <Head>
         <h1>Instant Meals</h1>
-        <HeaderCartBtn />
+        <HeaderCartBtn onShow={props.onShow} />
       </Head>
       <Image>
         <img src={Banner} alt="" />
